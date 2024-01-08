@@ -1,7 +1,6 @@
 ---
 import '../styles/global.css';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 
 const pageTitle = "Sobre mi";
 
@@ -23,59 +22,35 @@ const fontWeight = "bold";
 const textCase = "uppercase"
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{pageTitle}</title>
-	</head>
-	<body>
+<BaseLayout pageTitle={pageTitle}>
+    <h2>Mi primer sitio web con Astro</h2>
+    <p>
+        Este proyecto lo iré actualizando paso a paso con el tutorial introductorio creado por el equipo de Astro.
+        <a href="https://docs.astro.build/es/tutorial/2-pages/1/" target="_blank"></a>
+    </p>
 
-        <Header/>
+    <h3>Conoce algo acerca de mi:</h3>
+    <ul>
+        <li>Me llamo {identity.firstName}</li>
+        <li>Vivo en {identity.country}</li>
+        {
+            identity.hobbies.length >= 2 &&
+            <li>Dos de mis pasatiempos favoritos son: {identity.hobbies[0]} y {identity.hobbies[1]}</li>
+        }
+    </ul>
+    <h3>Mis habilidades son:</h3>
+    <ul>
+        {skills.map((skill) => 
+            <li class="skill">{skill}</li>
+        )}
+    </ul>
 
-		<h1>{pageTitle}</h1>
-        <h2>Mi primer sitio web con Astro</h2>
-        <p>
-            Este proyecto lo iré actualizando paso a paso con el tutorial introductorio creado por el equipo de Astro.
-            <a href="https://docs.astro.build/es/tutorial/2-pages/1/" target="_blank"></a>
-        </p>
-
-        <h3>Conoce algo acerca de mi:</h3>
-        <ul>
-            <li>Me llamo {identity.firstName}</li>
-            <li>Vivo en {identity.country}</li>
-            {
-                identity.hobbies.length >= 2 &&
-                <li>Dos de mis pasatiempos favoritos son: {identity.hobbies[0]} y {identity.hobbies[1]}</li>
-            }
-        </ul>
-        <h3>Mis habilidades son:</h3>
-        <ul>
-            {skills.map((skill) => 
-                <li class="skill">{skill}</li>
-            )}
-        </ul>
-
-        {happy && <p>¡Estoy feliz aprendiendo Astro!</p>}
-        {finished && <p>¡He terminado el tutorial!</p>}
-        {goal === 3 ? <p><strong>Nota: </strong>Mi objetivo es terminar el tutorial en 3 dias.</p> : <p>Mi objetivo no son 3 días.</p> }
-        
-        <Footer/>
-
-		<script>
-			import '../scripts/menu.js';
-		</script>
-        
-	</body>
-</html>
+    {happy && <p>¡Estoy feliz aprendiendo Astro!</p>}
+    {finished && <p>¡He terminado el tutorial!</p>}
+    {goal === 3 ? <p><strong>Nota: </strong>Mi objetivo es terminar el tutorial en 3 dias.</p> : <p>Mi objetivo no son 3 días.</p> }
+</BaseLayout>
 
 <style define:vars={{skillColor, fontWeight, textCase}}>
-    h1 {
-      color: purple;
-      font-size: 4rem;
-    }
     .skill{
         color: var(--skillColor);
         font-weight: var(--fontWeight);

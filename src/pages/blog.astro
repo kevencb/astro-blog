@@ -1,15 +1,13 @@
 ---
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import '../styles/global.css';
 
 const pageTitle = "Blog"
+const description = "Aquí es donde publicaré acerca de mi viaje aprendiendo Astro."
 ---
 
-<BaseLayout pageTitle={pageTitle}>
-	<p>Aquí es donde publicaré acerca de mi viaje aprendiendo Astro.</p>
-
+<BaseLayout pageTitle={pageTitle} description={description}>
+	<p>{description}</p>
 	<ul>
 		<li><a href="/posts/post-1">Post 01</a></li>
 		<li><a href="/posts/post-2">Post 02</a></li>

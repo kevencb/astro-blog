@@ -1,8 +1,10 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+
 const pageTitle = "Bienvenido Astro"
+const description = "Todo lo que iré aprendiendo de Astro lo encontrarás aquí."
 ---
 
-<BaseLayout pageTitle={pageTitle}>
-	<h2>Mi impresionante subtítulo del blog.</h2>
+<BaseLayout pageTitle={pageTitle} description={description}>
+	<p>{description}</p>
 </BaseLayout>

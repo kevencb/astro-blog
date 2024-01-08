@@ -3,6 +3,7 @@ import '../styles/global.css';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const pageTitle = "Sobre mi";
+const description = "Conoce mi perfil profesional y las soluciones que puedo brindarte o apoyarte"
 
 const identity = {
     firstName: "Keven CB",
@@ -22,10 +23,9 @@ const fontWeight = "bold";
 const textCase = "uppercase"
 ---
 
-<BaseLayout pageTitle={pageTitle}>
-    <h2>Mi primer sitio web con Astro</h2>
+<BaseLayout pageTitle={pageTitle} description={description}>
     <p>
-        Este proyecto lo iré actualizando paso a paso con el tutorial introductorio creado por el equipo de Astro.
+        {description}
         <a href="https://docs.astro.build/es/tutorial/2-pages/1/" target="_blank"></a>
     </p>
 
